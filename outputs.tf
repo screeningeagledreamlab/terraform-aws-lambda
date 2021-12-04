@@ -1,21 +1,21 @@
 output "arn" {
   description = "Lambda ARN"
-  value       = aws_lambda_function.this.arn
+  value       = var.s3_bucket != null && var.s3_key != null ? aws_lambda_function.s3_lambda[0].arn : aws_lambda_function.filename_lambda[0].arn
 }
 
 output "version" {
   description = "Lambda Version"
-  value       = aws_lambda_function.this.version
+  value       = var.s3_bucket != null && var.s3_key != null ? aws_lambda_function.s3_lambda[0].version : aws_lambda_function.filename_lambda[0].version
 }
 
 output "name" {
   description = "Lambda Name"
-  value       = aws_lambda_function.this.function_name
+  value       = var.s3_bucket != null && var.s3_key != null ? aws_lambda_function.s3_lambda[0].function_name : aws_lambda_function.filename_lambda[0].function_name
 }
 
 output "invoke_arn" {
   description = "ARN to invoke the lambda method"
-  value       = aws_lambda_function.this.invoke_arn
+  value       = var.s3_bucket != null && var.s3_key != null ? aws_lambda_function.s3_lambda[0].invoke_arn : aws_lambda_function.filename_lambda[0].invoke_arn
 }
 
 output "cloudwatch_logs_arn" {

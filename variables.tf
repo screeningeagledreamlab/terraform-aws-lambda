@@ -3,7 +3,17 @@ variable "function_name" {
   type        = string
 }
 variable "filename" {
-  description = "The path to the function's deployment package within the local filesystem. If defined. No S3 support"
+  description = "The path to the function's deployment package within the local filesystem."
+  type        = string
+}
+variable "s3_bucket" {
+  default     = null
+  description = "The S3 bucket location where the file will be uploaded to and used in function's deployment package. This bucket must reside in the same AWS region where you are creating the Lambda function."
+  type        = string
+}
+variable "s3_key" {
+  default     = null
+  description = "The S3 key of an object where the file will be uploaded to and used in function's deployment package."
   type        = string
 }
 variable "description" {
