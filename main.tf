@@ -83,10 +83,10 @@ resource aws_lambda_function_event_invoke_config filename_lambda_latest {
 resource aws_s3_bucket_object s3_file {
   count = var.s3_bucket != null && var.s3_key != null ? 1 : 0
 
-  bucket = var.s3_bucket
-  key    = var.s3_key
-  source = var.filename
-  etag = filemd5(var.filename)
+  bucket      = var.s3_bucket
+  key         = var.s3_key
+  source      = var.filename
+  source_hash = filemd5(var.filename)
 }
 
 resource aws_lambda_function s3_lambda {
